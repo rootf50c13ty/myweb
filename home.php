@@ -7,9 +7,6 @@
 		
 		<link href="/home/ajin/lampstack-7.3.12-0/apache2/htdocs/myweb/css/navbar.css" rel="stylesheet">
 
-
-
-
 		<style>
 /*
 			<link rel="stylesheet" type="text/css"

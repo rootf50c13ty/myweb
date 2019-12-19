@@ -137,7 +137,7 @@
 	<body>
 
 		<div class="header">
-		  <h1>Hello Friends</h1>
+		  <h1>Hello Friend</h1>
 		  <p>Welcome to Oootyy nice to meet you !.</p>
 		</div>
 
@@ -152,7 +152,7 @@
 	  <div class="search-container">
 	    <form action="/action_page.php">
 	      <input type="text" placeholder="Search.." name="search">
-	      <button type="submit">Submit</button>
+	      <button type="submit">Search</button>
 	    </form>
 	  </div>
 	</div>

@@ -7,7 +7,7 @@
 	$con = new mysqli($host,$user, $pass, $db_name);
 	if($con)
 	{
-		echo "Db connected successfully";
+		//echo "Db connected successfully";
 	}
 
 	else

@@ -144,10 +144,10 @@
 
 		
 	<div class="topnav">
-	  <a class="active" href="#home">Home</a>
+	  <a class="active" href="home.php">Home</a>
 	  <a href="#about">About</a>
-	  <a href="#">Sign Up</a>
-	   <a href="#">Sign In</a>
+	  <a href="signup.php">Sign Up</a>
+	   <a href="login.php">Log In</a>
 	    <a href="#">Contact</a>
 	  <div class="search-container">
 	    <form action="/action_page.php">

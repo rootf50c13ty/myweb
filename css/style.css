@@ -106,14 +106,23 @@
 				}
 		
 				/* Footer */
-				.footer {
-				  padding: 20px;
-				  text-align: center;
-				  background: #ddd;
-				  margin-top: 20px;
-				}
+.footer 
+{
 
-@font-face {
+position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+padding: 20px;
+text-align: center;
+background: #ddd;
+margin-top: 20px;
+}
+
+.font-face {
 font-family: 'MrRobot';
 font-style: normal;
 font-weight: normal;

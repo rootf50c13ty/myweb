@@ -18,8 +18,8 @@
 	<div class="topnav">
 	  <a  href="#home">Home</a>
 	  <a href="#about">About</a>
-	  <a class="active" href="signup.php">Sign Up</a>
-	   <a href="login.php">Sign In</a>
+	  <a class="active" href="#">Sign Up</a>
+	   <a href="#">Sign In</a>
 	    <a href="#">Contact</a>
 	  <div class="search-container">
 	    <form action="/action_page.php">

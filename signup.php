@@ -15,6 +15,7 @@
         <link href="css/form-validation.css" rel="stylesheet">
 
         <script>
+           
             function checkPass()
             {
                 //toggle visibility
@@ -39,79 +40,80 @@
                     document.getElementById('match').innerHTML='Passwords do not match';
                 }
             }
+
             function checkPasswordStrength() 
             {
-                //toggle visibility
-                if(document.getElementById('warning').style.display == 'none')
-                    document.getElementById('warning').style.display = 'block'; 
-                
-                if(document.getElementById('strength').style.display == 'none')
-                    document.getElementById('strength').style.display = 'block';
-                
-                if(document.getElementById('strength-desc').style.display == 'none')
-                    document.getElementById('strength-desc').style.display = 'block';
-                
+                        //toggle visibility
+                        if(document.getElementById('warning').style.display == 'none')
+                            document.getElementById('warning').style.display = 'block'; 
+                        
+                        if(document.getElementById('strength').style.display == 'none')
+                            document.getElementById('strength').style.display = 'block';
+                        
+                        if(document.getElementById('strength-desc').style.display == 'none')
+                            document.getElementById('strength-desc').style.display = 'block';
+                        
 
-                var password=document.getElementById('password').value;
+                        var password=document.getElementById('password').value;
 
-                //TextBox left blank.
-                if (password.length == 0) 
-                {
-                    document.getElementById('strength').innerHTML = "Password is Very Weak";
-                    document.getElementById('strength').style.color = '#dc3545' ;
-                    return;
-                }
+                        //TextBox left blank.
+                        if (password.length == 0) 
+                        {
+                            document.getElementById('strength').innerHTML = "Password is Very Weak";
+                            document.getElementById('strength').style.color = '#dc3545' ;
+                            return;
+                        }
 
-                //Regular Expressions.
-                var regex = new Array();
-                regex.push("[A-Z]"); //Uppercase Alphabet.
-                regex.push("[a-z]"); //Lowercase Alphabet.
-                regex.push("[0-9]"); //Digit.
-                regex.push("[$@$!%*#?&]"); //Special Character.
+                        //Regular Expressions.
+                        var regex = new Array();
+                        regex.push("[A-Z]"); //Uppercase Alphabet.
+                        regex.push("[a-z]"); //Lowercase Alphabet.
+                        regex.push("[0-9]"); //Digit.
+                        regex.push("[$@$!%*#?&]"); //Special Character.
 
-                var passed = 0;
+                        var passed = 0;
 
-                //Validate for each Regular Expression.
-                for (var i = 0; i < regex.length; i++) 
-                    if (new RegExp(regex[i]).test(password)) 
-                        passed++;
+                        //Validate for each Regular Expression.
+                        for (var i = 0; i < regex.length; i++) 
+                            if (new RegExp(regex[i]).test(password)) 
+                                passed++;
 
-                //Validate for length of Password.
-                if (passed > 2 && password.length > 8) 
-                    passed++;
+                        //Validate for length of Password.
+                        if (passed > 2 && password.length > 8) 
+                            passed++;
 
-                //Display status.
-                var color = "";
-                var strength = "";
-                switch (passed) 
-                {
-                    case 0:
-                        strength = "Very Weak";
-                        color = "#dc3545";
-                        break;
-                    case 1:
-                        strength = "Weak";
-                        color = "#dc3545";
-                        break;
-                    case 2:
-                        strength = "Good";
-                        color = "#ffc107";
-                        break;
-                    case 3:
-                        strength = "Strong";
-                        color = "#28a745";
-                        break;
-                    case 4:
-                        strength = "Very Strong";
-                        color = "darkgreen";
-                        break;
-                }
-                if(passed>2)
-                    document.getElementById('strength-desc').style.display = 'none';
-                    
-                document.getElementById('strength').innerHTML = "Password is "+strength;
-                
-                document.getElementById('strength').style.color = color;
+                        //Display status.
+                        var color = "";
+                        var strength = "";
+                        switch (passed) 
+                        {
+                            case 0:
+                                strength = "Very Weak";
+                                color = "#dc3545";
+                                break;
+                            case 1:
+                                strength = "Weak";
+                                color = "#dc3545";
+                                break;
+                            case 2:
+                                strength = "Good";
+                                color = "#ffc107";
+                                break;
+                            case 3:
+                                strength = "Strong";
+                                color = "#28a745";
+                                break;
+                            case 4:
+                                strength = "Very Strong";
+                                color = "darkgreen";
+                                break;
+                        }
+                        if(passed>2)
+                            document.getElementById('strength-desc').style.display = 'none';
+                            
+                        document.getElementById('strength').innerHTML = "Password is "+strength;
+                        
+                        document.getElementById('strength').style.color = color;
             }
         </script>
 
@@ -147,7 +149,7 @@
                         <p>Please fill in this form to create an account.</p>
                         <hr>
 
-                    <br<
+                    <br>
 
                         <label for="uname"><b>Username</b></label>
                         <input type="text" placeholder="Enter username" name="uname" required>
@@ -158,10 +160,10 @@
                         <input type="text" placeholder="Enter Email" name="email" required>
                     <br>
                         <label for="pass"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="pass" required>
+                        <input type="password" placeholder="Enter Password" name="pass" minlength="8" oninput="checkPasswordStrength()">
                     <br>
                         <label for="pass-rpt"><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="pass-rpt" required>
+                        <input type="password" placeholder="Repeat Password" name="pass-rpt" oninput="checkPass()">
                      <br>   
                         <hr>
                         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
@@ -173,6 +175,33 @@
                         <p>Already have an account? <a href="#">Sign in</a>.</p>
                       </div>
                     </form>
+
+
+
+                    <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (
+                function() 
+                {
+                'use strict';
+
+                window.addEventListener('load', function() {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
 
 	</body>
 

@@ -7,12 +7,6 @@
 	$email=$_POST["email"];
 	$pass=$_POST["pass"];
 
-echo $uname;
-echo "<br>";
-echo $email;
-echo "<br>";
-echo $pass;
-echo "<br>";
 
 	$query= "INSERT INTO user_data (username,password,email,status) VALUES ('$uname','$pass','$email',false)";
 

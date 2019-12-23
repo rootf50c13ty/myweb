@@ -128,7 +128,7 @@
 		  <p>Welcome to Oootyy nice to meet you !.</p>
 		</div>
 	<div class="topnav">
-	  <a  href="#home">Home</a>
+	  <a  href="home.php">Home</a>
 	  <a href="#about">About</a>
 	  <a class="active" href="signup.php">Sign Up</a>
 	   <a href="login.php">Log In</a>

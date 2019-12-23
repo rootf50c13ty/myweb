@@ -29,8 +29,8 @@
 	  </div>
 	</div>
 
-<dic align=center>
-     <form align=center action="logaction.php" method="post">
+<div align=center>
+     <form action="loginaction.php" method="post">
         <div align=center>
      <!--      <img srcc="images/logo1.png" alt=""> -->
             <h1 >Sign In</h1>

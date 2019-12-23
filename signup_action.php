@@ -8,14 +8,16 @@
 	$pass=$_POST["pass"];
 
 echo $uname;
+echo "<br>";
 echo $email;
+echo "<br>";
 echo $pass;
+echo "<br>";
 
+	$query= "INSERT INTO user_data (username,password,email,status) VALUES ('$uname','$pass','$email',false)";
 
-	$query= "INSERT INTO user_data (username,passowrd,email) VALUES ($uname,$pass,$email)";
-
-	 if($con->query($query)=== TRUE)
-       echo'<script type="text/javascript">alert("After verification you may login into your account");window.location="login.php"</script>';
+	 if($con->query($query))
+       echo'<script type="text/javascript">alert("Sign Up Successfull !!!..After verification you may login into your account");window.location="login.php"</script>';
     else
 	   echo'<script type="text/javascript">alert("Error account not created, username already exists");window.location="signup.php"</script>';
   

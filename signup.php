@@ -65,6 +65,7 @@
                             return;
                         }
 
+
                         //Regular Expressions.
                         var regex = new Array();
                         regex.push("[A-Z]"); //Uppercase Alphabet.
@@ -76,7 +77,7 @@
 
                         //Validate for each Regular Expression.
                         for (var i = 0; i < regex.length; i++) 
-                            if (new RegExp(regex[i]).test(password)) 
+                            if (new RegExp(regex[i]).test(password) && password.lenghth >=0) 
                                 passed++;
 
                         //Validate for length of Password.
@@ -116,117 +117,178 @@
                         
                         document.getElementById('strength').style.color = color;
             }
-        </script>
+     
+
+            function fvalidation()                                    
+            { 
+                    var uname = document.forms["regform"]["uname"];               
+                    var email = document.forms["regform"]["email"];    
+                   
+                   
+                    if (uname.value == "")                                  
+                    { 
+                        window.alert("Please enter a username."); 
+                        uname.focus(); 
+                        return false; 
+                    } 
+                                  
+                    if (email.value == "")                                   
+                    { 
+                        window.alert("Please enter a valid e-mail address."); 
+                        email.focus(); 
+                        return false; 
+                    } 
+
+
+            }
+
+
+            function checkpass()
+            {
+                    var pwd1  = document.forms["regform"]["pass"];
+                    var pwd2  = document.forms["regform"]["pass-rpt"];
+                    var goodColor = "#66cc66";
+                    var badColor = "#ff6666";
+
+                    if(pwd1.value.length > 8)
+                    {
+                        pwd1.style.backgroundColor = goodColor;
+                        message.style.color = goodColor;
+                        message.innerHTML = "character number ok!"
+                    }
+                    else
+                    {
+                        pwd.style.backgroundColor = badColor;
+                        message.style.color = badColor;
+                        window.alert("Please enter a valid PaSSS."); 
+                        message.innerHTML = " you have to enter at least 6 digit!"
+                        return;
+                    }
+
+            }
+
+
+
+
+        </script> 
 
 </head>
 
-	<body>
+	<body onload='document.regform.uname.focus()'>
 
      <div class="col-md-4 order-md-2 mb-4" id="warning" style="display:none;position:absolute;top:60%;transform:translateY(-60%);right:1%;transform:translateY(-1%);z-index: 1;">
                     <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
                                 <h6 class="my-0" id="strength" style="display:none;"></h6>
-                                <small class="text-muted"  id="strength-desc" style="display:none;">Please enter a stronger password.Make it stronger by adding special characters,a mix of uppercase,lowercase alphabets and numbers or by increasing its length.</small>
+                                <small class="text-muted"  id="strength-desc" style="display:none;">Your password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters.</small>
                                 <br>
                                 <h6 class="my-0" id="match" style="display:none;"></h6>
-                                <small class="text-muted" id="match-desc" style="display:none;">Please enter make sure both passwords are the same.</small>                                
+                                <small class="text-muted" id="match-desc" style="display:none;">Please make sure both passwords are the same.</small>                                
                             </div>
                         </li>
                     </ul>
 
     </div>
 
-
-
-		<div class="header">
-		  <h1>Hello Friend</h1>
-		  <p>Welcome to Oootyy nice to meet you !.</p>
-		</div>
-	<div class="topnav">
-	  <a  href="home.php">Home</a>
-	  <a href="#about">About</a>
-	  <a class="active" href="signup.php">Sign Up</a>
-	   <a href="login.php">Log In</a>
-	    <a href="#">Contact</a>
-	  <div class="search-container">
-	    <form action="/action_page.php">
-	      <input type="text" placeholder="Search.." name="search">
-	      <button type="submit">Search</button>
-	    </form>
-	  </div>
+    <div class="header">
+	   <h1>
+            Hello Friend
+       </h1>
+       <p>
+            Welcome to Oootyy nice to meet you !.
+       </p>
+	
 	</div>
 
-                <form action="signup_action.php" class="needs-validation" method="post" novalidate>
-                      <div class="container" align=center>
-                        <h1>Register</h1>
-                        <p>Please fill in this form to create an account.</p>
-                        <hr>
+	<div class="topnav">
+    	<a  href="home.php">Home</a>
+    	<a href="#about">About</a>
+    	<a class="active" href="signup.php">Sign Up</a>
+    	<a href="login.php">Log In</a>
+    	<a href="#">Contact</a>
+    	<div class="search-container">
+    	    <form action="/action_page.php">
+    	       <input type="text" placeholder="Search.." name="search">
+    	       <button type="submit">Search</button>
+    	    </form>
+    	</div>
+	</div>
 
-                    <br>
-
+    <form name=regform action="signup_action.php" class="needs-validation" onsubmit="return fvalidation()"  method="post" novalidate>
+        <div class="container" align=center>
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
+            <br>
+            <br>
               
-                        <label for="uname">
-                            <b>Username</b>
-                        </label>
-                        
-                        <input type="text" id=username maxlength="15" placeholder="Enter username" name="uname"  required>
+            <label for="uname">
+                <b>Username</b>
+            </label>                  
+            <input type="text" id=username maxlength="15" placeholder="Enter username" name="uname"  required>
 
-                    <br>
+            <br>
 
-
-                     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>   
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>   
                     
-    <br>
+            <br>
 
-                   
+            <label for="pass"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" minlength=8 name="pass" id=password onkeyup="checkPass(); return false;" >
+                
+            <br>
+            <label for="pass-rpt"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" minlenghth=8 name="pass-rpt" id=repassword onkeyup="checkPass(); return false;">
+            <br>   
+            <hr>
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-                        <label for="pass"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="pass" id=password minlength="8" oninput="checkPasswordStrength()">
-                    
-                    <br>
-                        <label for="pass-rpt"><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="pass-rpt" id=repassword oninput="checkPass()">
-                     <br>   
-                        <hr>
-                        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-
-                        <button type="submit" class="registerbtn">Register</button>
-                      </div>
+            <button type="submit" class="registerbtn" onclick="ValidateEmail(document.regform.email)">Register</button>
+        </div>
                       
-                      <div class="container signin">
-                        <p>Already have an account? <a href="#">Sign in</a>.</p>
-                      </div>
-                    </form>
+        <div class="container signin">
+            <p>Already have an account? <a href="#">Sign in</a>.</p>
+        </div>
+    </form>
 
 
 
-                    <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (
-                function() 
+    <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+        (
+        function() 
+        {
+            'use strict';
+
+            window.addEventListener('load', function() 
+            {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                            // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) 
                 {
-                'use strict';
+                    form.addEventListener('submit', function(event) 
+                    {
+                        if (form.checkValidity() === false) 
+                        {
+                            event.preventDefault();
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
 
-                window.addEventListener('load', function() {
-                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                    var forms = document.getElementsByClassName('needs-validation');
+            }, false);
+            
+        })();
 
-                    // Loop over them and prevent submission
-                    var validation = Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
-        </script>
 
-	</body>
+    </script>
+
+    <script src="./js/mailvalidation.js"></script>
+
+</body>
 
 </html>

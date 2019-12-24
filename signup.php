@@ -14,6 +14,7 @@
         <!-- Custom styles for this template -->
         <link href="css/form-validation.css" rel="stylesheet">
 
+
         <script>
            
             function checkPass()
@@ -121,7 +122,20 @@
 
 	<body>
 
+     <div class="col-md-4 order-md-2 mb-4" id="warning" style="display:none;position:absolute;top:60%;transform:translateY(-60%);right:1%;transform:translateY(-1%);z-index: 1;">
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0" id="strength" style="display:none;"></h6>
+                                <small class="text-muted"  id="strength-desc" style="display:none;">Please enter a stronger password.Make it stronger by adding special characters,a mix of uppercase,lowercase alphabets and numbers or by increasing its length.</small>
+                                <br>
+                                <h6 class="my-0" id="match" style="display:none;"></h6>
+                                <small class="text-muted" id="match-desc" style="display:none;">Please enter make sure both passwords are the same.</small>                                
+                            </div>
+                        </li>
+                    </ul>
 
+    </div>
 
 
 
@@ -143,7 +157,7 @@
 	  </div>
 	</div>
 
-                <form action="signup_action.php" method="post" novalidate>
+                <form action="signup_action.php" class="needs-validation" method="post" novalidate>
                       <div class="container" align=center>
                         <h1>Register</h1>
                         <p>Please fill in this form to create an account.</p>
@@ -151,19 +165,29 @@
 
                     <br>
 
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter username" name="uname" required>
+              
+                        <label for="uname">
+                            <b>Username</b>
+                        </label>
+                        
+                        <input type="text" id=username maxlength="15" placeholder="Enter username" name="uname"  required>
 
                     <br>
 
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                    <br>
+
+                     <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>   
+                    
+    <br>
+
+                   
+
                         <label for="pass"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="pass" minlength="8" oninput="checkPasswordStrength()">
+                        <input type="password" placeholder="Enter Password" name="pass" id=password minlength="8" oninput="checkPasswordStrength()">
+                    
                     <br>
                         <label for="pass-rpt"><b>Repeat Password</b></label>
-                        <input type="password" placeholder="Repeat Password" name="pass-rpt" oninput="checkPass()">
+                        <input type="password" placeholder="Repeat Password" name="pass-rpt" id=repassword oninput="checkPass()">
                      <br>   
                         <hr>
                         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>

@@ -25,7 +25,7 @@
 
 	if($row=$qv->fetch_array())
 	{
-		if(strcmp($password,$row['password'])==0)
+		if(strcmp($password,$row['password'])==0 && $row['status']==1)
 		{
 			session_start();
 
@@ -66,6 +66,11 @@
 
 
 		}
+
+
+		elseif ($row['status']==0) 
+		{
+			echo '<script type="text/javascript">alert("Login failed, Waiting for admin approval...");window.location="login.php"</script>';		}
 
 		else
         {

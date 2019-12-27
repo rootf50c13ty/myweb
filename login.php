@@ -30,6 +30,7 @@
 	</div>
 
 <div align=center>
+	
      <form action="loginaction.php" method="post">
         <div align=center>
      <!--      <img srcc="images/logo1.png" alt=""> -->

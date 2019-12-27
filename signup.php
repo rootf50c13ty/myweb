@@ -16,60 +16,7 @@
 
 
         <script>
-           
-            function formValidation()
-            {
-                
-                var uname = document.forms["regform"]["uname"];               
-                var email = document.forms["regform"]["email"];    
-                var pass = document.forms["regform"]["pass"];  
-                
-                if (uname.value == "")                                  
-                { 
-                    window.alert("Please enter your name."); 
-                    name.focus(); 
-                    return false; 
-                } 
-               
-                if (address.value == "")                               
-                { 
-                    window.alert("Please enter your address."); 
-                    address.focus(); 
-                    return false; 
-                } 
-                   
-                if (email.value == "")                                   
-                { 
-                    window.alert("Please enter a valid e-mail address."); 
-                    email.focus(); 
-                    return false; 
-                } 
-               
-                if (phone.value == "")                           
-                { 
-                    window.alert("Please enter your telephone number."); 
-                    phone.focus(); 
-                    return false; 
-                } 
-               
-                if (password.value == "")                        
-                { 
-                    window.alert("Please enter your password"); 
-                    password.focus(); 
-                    return false; 
-                } 
-               
-                if (what.selectedIndex < 1)                  
-                { 
-                    alert("Please enter your course."); 
-                    what.focus(); 
-                    return false; 
-                } 
-               
-                return true;
-            }
-
-
+    
             function checkPass()
             {
                 //Store the password field objects into variables ...
@@ -91,6 +38,9 @@
                         confirm.style.backgroundColor = good_color;
                         message.style.color           = good_color;
                         message.innerHTML             = "Passwords Match!";
+                        
+                        return true;
+
                     }
                     else
                     {
@@ -100,8 +50,51 @@
                         confirm.style.backgroundColor = bad_color;
                         message.style.color           = bad_color;
                         message.innerHTML             = "Passwords Do Not Match!";
+
+                        return false;
                     }
+             
+            }
+
+            function ValidateEmail(email)
+            {
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 
+                if(email.value.match(mailformat))
+                {
+                    document.regform.email.focus();
+                    return true;
+                                       
+                }
+                else
+                {
+                    alert("You have entered an invalid email address!");
+                    document.regform.email.focus();
+                    return false;
+                }
+            }
+
+
+            function validateForm()
+            {
+                // Set error catcher
+                var error = 0;
+                // Check name
+                if(!checkPass())
+                {
+                    error++;
+                }
+                // Validate email
+                if(!ValidateEmail(document.getElementById('email').value))
+                {
+                  
+                    error++;
+                }
+                // Don't submit form if there are errors
+                if(error > 0)
+                {
+                    return false;
+                }
             }
 
         </script> 
@@ -134,7 +127,7 @@
     	</div>
 	</div>
 
-    <form name=regform action="signup_action.php" method="post">
+    <form name=regform action="signup_action.php" onsubmit="return validateForm()" method="post">
         <div class="container" align=center>
             <h1>Register</h1>
             <p>Please fill in this form to create an account.</p>
@@ -149,21 +142,21 @@
             <br>
 
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" id=email name="email" required >   
+            <input type="text" placeholder="Enter Email" id=email name="email" required onblur="ValidateEmail(email)">   
                     
             <br>
 
             <label for="pass"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" minlength=8 name="pass" id=pass required onkeyup="checkPass();">
+            <input type="password" placeholder="Enter Password" minlength=8 name="pass" id=pass required onblur="checkPass()">
                 
             <br>
             <label for="pass-rpt"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" minlenghth=8 name="pass-rpt" id=repassword required onkeyup="checkPass();">
+            <input type="password" placeholder="Repeat Password" minlenghth=8 name="pass-rpt" id=repassword required onblur="checkPass()">
             <br>   
             <hr>
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-            <button type="submit" class="registerbtn" onclick="ValidateEmail(document.regform.email,document.regform.pass,document.regform.pass-rpt)">Register</button>
+            <button type="submit" class="registerbtn">Register</button>
         </div>
                       
         <div class="container signin">

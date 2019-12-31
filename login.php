@@ -41,7 +41,7 @@
         <div >
 
        	    <label for="inputEmail">Username</label>
-            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus autocomplete="off">
+            <input name="username" type="text" id="username" class="form-control" placeholder="Username" required autofocus autocomplete="off">
         
         </div>
 
@@ -49,8 +49,8 @@
 
         <div >
 
-        	<label for="inputPassword">Password</label>
-            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
+        	<label for="password">Password</label>
+            <input name="password" type="password" id="password" class="form-control" placeholder="Password" required autocomplete="off">
           
         </div>
 

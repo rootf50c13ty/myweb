@@ -157,7 +157,7 @@
           include('../db.php');
           
           // checkimg for logged in users , $_SESSION['type']==1 for confirming user is admin or not      
-          SESSION_START();
+          session_start();
           if($_SESSION['username'] && $_SESSION['type']==2) 
           {       
               $query="select * from user_data where status=0";
@@ -201,13 +201,13 @@
                              // echo $row['email'];
                              // echo "</td><td>"; 
                       //passing uid to unblock action page using anchor tag
-                              $uid=$row['username'];
+                              $username=$row['username'];
                               echo "<a href=acceptusers.php?username=$username>";
                               echo '<input type="button" value="Accept" style="background-color:green;height:30px;width:80px">';
                               echo "
                               </td>
                               <td>";
-                              echo "<a href=blockedusers/removeconfirmnewusers.php?username=$username>";
+                              echo "<a href=rejectnewuser.php?username=$username>";
                               echo '<input type="button" value="Reject" style="background-color:red;height:30px;width:80px">';
                               echo "
                               </td>

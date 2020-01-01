@@ -1,11 +1,13 @@
 <?php
-SESSION_START();
+session_start();
 
-if($_SESSION['username'] && $_SESSION['type']==2)
+
+if($_SESSION['username'] && $_SESSION['type']==2) 
 {	
 	include('../db.php');
-	$uid=$_GET['uid'];
-	$query="update user_data set status=1 where username=$username";
+	$username=$_GET['username'];
+	//echo $username;
+	$query="update user_data set status=1 where username='$username'";
 	$con->query($query);
 }
 else
@@ -14,6 +16,8 @@ else
 		</script>';
 ?>
 
+
 <script>
 	alert('user accepted');window.location="newuser.php";
 </script>
+

@@ -7,7 +7,8 @@ session_start();
 $_SESSION['delusername']=$username;
 //$con->query($query);
 
-echo 
+//Alert msg before deleting a user.
+echo  
 
 	'<script>
 		

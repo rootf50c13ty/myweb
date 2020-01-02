@@ -16,7 +16,8 @@
 	
 
 	$query="select password from user_data where username='$username'";
-	$qv=$con->query($query); //fetching array from db
+	$qv=$con->query($query); 
+	//fetching array from db
 	//$test=$qv->fetch_array();
 	
 	if($row=$qv->fetch_array())

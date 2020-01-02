@@ -7,6 +7,8 @@
 		
 		<link href="/home/ajin/lampstack-7.3.12-0/apache2/htdocs/myweb/css/navbar.css" rel="stylesheet">
 
+		<title>Post a new Quote </title>
+
 		<style>
 /*
 			<link rel="stylesheet" type="text/css"
@@ -152,10 +154,8 @@
 	  <a href="#about">About</a>
 	  <a href="#">Contact</a>
 	  <a href="logout.php">Log Out</a>
-	  
-	  <button type="submit" onclick="window.location='postquote.php'">Post Quote</button>
 
-		  <div class="search-container">
+	  <div class="search-container">
 		    <form action="/action_page.php">
 		      <input type="text" placeholder="Search.." name="search">
 		      <button type="submit">Search</button>
@@ -164,18 +164,6 @@
 	</div>
 
 
-
-  <body class="bg-light" onload="verifyLog()">
- 
-           
-           
-
-  
-
-
-  	<div class="footer">
-  <h2>Footer</h2>
-</div>
 
 
 	</body>

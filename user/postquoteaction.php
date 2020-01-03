@@ -17,7 +17,6 @@
         }     
     }
  
-
     $quote=$_POST["quote"];
     $season=$_POST["season"];
 

@@ -17,6 +17,7 @@
 
 	$query="select password from user_data where username='$username'";
 	$qv=$con->query($query); 
+
 	//fetching array from db
 	//$test=$qv->fetch_array();
 	
@@ -36,9 +37,8 @@
 				{
 					$_SESSION['username']=$row['username'];
 					$_SESSION['type']=$row['utype'];
-
-					$temp='1';
-					
+					$_SESSION['status']=$row['status'];
+				
 							//blocked users
 							$aa="2";
 							if(strcmp($aa,$row['utype'])==0)

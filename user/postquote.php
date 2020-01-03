@@ -124,23 +124,104 @@
 		
 				/* Footer */
 				.footer {
-				  bottom: 0;
+
+				  position:fixed;
+				  left:0px;
+				  bottom:0px;
+				  height:30px;
+				  width:100%;	
 				  padding: 20px;
 				  text-align: center;
 				  background: #ddd;
 				  margin-top: 20px;
 				}
 
+				.dropdown 
+				{
+				  float: left;
+				  overflow: hidden;
+				}
 
+				.dropdown .dropbtn 
+				{
+				  font-size: 16px; 
+				  font-weight: bold; 
+				  border: none;
+				  outline: none;
+				  color: red;
+				  padding: 14px 16px;
+				  background-color: inherit;
+				  font-family: inherit;
+				  margin: 0;
+				}
+
+				.navbar a:hover, .dropdown:hover .dropbtn 
+				{
+				  background-color: black;
+				}
+
+				.dropdown-content {
+				  display: none;
+				  position: absolute;
+				  background-color: #f9f9f9;
+				  min-width: 160px;
+				  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				  z-index: 1;
+				}
+
+				.dropdown-content a 
+				{
+				  float: none;
+				  color: black;
+				  padding: 12px 16px;
+				  text-decoration: none;
+				  display: block;
+				  text-align: left;
+				}
+
+				.dropdown-content a:hover 
+				{
+				  background-color: #ddd;
+				}
+
+				.dropdown:hover .dropdown-content 
+				{
+				  display: block;
+				}
+
+				select 
+				{ 
+					width: 200px; 
+					text-align:center; 
+				}
 
 		</style>
 
 	</head>
 
 	<body>
+		
+		<?php
+	          //inlcuding db file
+	          include('../db.php');
+	          
+	          // checkimg for logged in users , $_SESSION['type']==1 for confirming the user level
 
+	          session_start();
+	          if($_SESSION['username'] && $_SESSION['status']==1) 
+	          {       
 
+	              //selecting user data
+	          	  $username=$_SESSION['username'];
+	              $query="select * from user_data where username='$username'";
+	              $rr=$con->query($query);
+	              if($row = $rr->fetch_array())
+	      		  {
+	      		  	$uid=$row['uid'];
+	      		  } 	
+	          }
 
+      	?>
 
 		<div class="header">
 		  <h1>Hello Friend</h1>
@@ -153,6 +234,19 @@
 	  <a class="active" href="home.php">Home</a>
 	  <a href="#about">About</a>
 	  <a href="#">Contact</a>
+
+	   <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Season 1</a>
+      <a href="#">Season 2</a>
+      <a href="#">Season 3</a>
+      <a href="#">Season 4</a>
+    </div>
+  </div> 
+
 	  <a href="logout.php">Log Out</a>
 
 	  <div class="search-container">
@@ -163,6 +257,67 @@
 		  </div>
 	</div>
 
+
+
+	<main role="main">
+               
+        <div >
+            <h5 style="text-align:center; font-size: 30px;">Post your Quote</h5>
+            
+            <form action="postquoteaction.php" method="post" id="postquote">
+             
+
+                <div align=center>
+                    <div>
+                        <span>Add your Quote..</span>
+                    </div>
+
+                    <textarea name="quote" id="quo" value="" aria-label="With textarea"  rows="4" cols="50" style="resize:none;" required autofocus>
+                    	
+                    </textarea>
+                </div>
+
+                <br>
+                
+                <div align=center>
+                    <div >
+                        <label for="inputseasonselect">Select Season</label>
+
+                       <br>
+                    </div>
+
+	                <div>
+
+	                    <select name="season" id="inputGroupSelect03">
+	                        
+	                        <option selected >Choose</option>
+	                        <?php
+
+		                        $query="SELECT * FROM seasons ORDER BY season";
+		                        $res=$con->query($query);
+		                        
+		                        while($row=$res->fetch_array())
+		                        {
+		                            $opt=$row['season'];
+		                            echo"<option >$opt</option>";
+	                        	}
+	                        ?>
+	                </div>
+
+                    </select>
+
+                </div>
+                <br>
+                
+           
+
+            <button type="submit" form="postquote" onclick="return validate()">Post</button>
+
+             </form>
+
+        </div>
+      
+    </main>      
 
 
 

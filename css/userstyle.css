@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Home Page</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
+//userstyle
+
 			/* Style the header */
 				.header 
 				{
@@ -180,76 +175,3 @@
 				{
 				  display: block;
 				}
-
-		</style>
-
-	</head>
-	
-	<body>
-
-		<?php
-	          //inlcuding db file
-	          include('../db.php');
-	          
-	          // checkimg for logged in users , $_SESSION['type']==1 for confirming the user level
-	          session_start();
-	          if($_SESSION['username'] && $_SESSION['status']==1) 
-	          {       
-
-	              //selecting user data
-	          	  $username=$_SESSION['username'];
-	              $query="select * from user_data where username='$username'";
-	              $rr=$con->query($query);
-	              if($row = $rr->fetch_array())
-	      		  {
-	      		  	$uid=$row['uid'];
-	      		  } 	
-	          }
-
-      	?> 
-
-		<div class="header">
-		  <h1>Hello Friend</h1>
-		  <p>Welcome to Oootyy nice to meet you !.</p>
-		</div>
-
-
-		
-	<div class="topnav">
-	  <a class="active" href="home.php">Home</a>
-	  <a href="#about">About</a>
-	  <a href="#">Contact</a>
-	  	  
-	  <div class="dropdown">
-    <button class="dropbtn">Dropdown 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Season 1</a>
-      <a href="#">Season 2</a>
-      <a href="#">Season 3</a>
-      <a href="#">Season 4</a>
-    </div>
-  </div> 
-
-      <a href="logout.php">Log Out</a>
-	  
-	  <button type="submit" onclick="window.location='postquote.php'">Post Quote</button>
-
-		  <div class="search-container">
-		    <form action="/action_page.php">
-		      <input type="text" placeholder="Search.." name="search">
-		      <button type="submit">Search</button>
-		    </form>
-		  </div>
-	</div>
-
-	<div class="footer">
-  		<p>Footer</p>
-	</div>
-
-
-
-
-	</body>
-</html>

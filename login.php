@@ -62,13 +62,13 @@
         <br>
 
         <div >
-            <a  href="register.php" role="button">Click here to Register</a>
+            <a  href="signup.php" role="button">Click here to Register</a>
         </div>
 
         <br>
 
         <div >
-            <a href="user/main.php" role="button">Click here to go back</a>
+            <a href="user/home.php" role="button">Click here to go back</a>
         </div>
         
     </form>

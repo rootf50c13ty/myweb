@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Accepted Quotes</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -113,7 +113,7 @@
           width: 100%;
           padding: 20px;
         }
-
+    
         /* Footer */
         .footer {
           padding: 20px;
@@ -122,6 +122,33 @@
           margin-top: 20px;
         }
 
+        #quotes {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  
+}
+
+#quotes td, #quotes th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#quotes tr:nth-child(even){background-color: #f2f2f2;}
+
+#quotes tr:hover {background-color: #ddd;}
+
+#quotes th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+table.a {
+  table-layout: auto;
+  width: 80%;  
+}
 
 
     </style>
@@ -135,10 +162,10 @@
       <p>Welcome to Oootyy nice to meet you !.</p>
     </div>
 
-<div class="topnav">
-      <a class="active" href="newuser.php">New Users</a>
+    <div class="topnav">
+      <a href="newuser.php">New Users</a>
       <a href="newquotes.php">New Quotes</a>
-      <a href="acceptedquotes.php">Accepted Quotes</a>
+      <a class="active" href="acceptedquotes.php">Accepted Quotes</a>
       <a href="activeusers.php">Active Users</a>
       <a href="logout.php">Logout</a>
       <div class="search-container">
@@ -150,91 +177,74 @@
     </div>
   
     <div align=center>
-      <h2 align=center> New Users </h2>
-    
-      <?php
-          //inlcuding db file
-          include('../db.php');
-          
-          // checkimg for logged in users , $_SESSION['type']==2 for confirming user is admin or not
+      <h2 align=center> Accepted Quotes.. </h2>
 
+
+<?php
+          include('../db.php');
           session_start();
           if($_SESSION['username'] && $_SESSION['type']==2) 
-          {       
+          {    
 
               //selecting new users , status==o
-
-              $query="select * from user_data where status=0";
+              $query="select * from quotes where status=1";
               $rr=$con->query($query);
+
+              //if num or returned by the query is > 0
               if(mysqli_num_rows($rr)>0)
               {
                     // constructing table view
                       echo '
 
-                      <table>
+                      <table class="a" cellspacing="20" id="quotes">
                         <thead>
                           <tr>
-                                    <th></th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Approve</th>
-                                    <th>Reject</th>
                                     
+                                    <th>Season ID</th>
+                                    <th>User ID</th>
+                                    <th>Quote</th>
+                                                                       
                           </tr>
                         </thead>
 
                     <tbody>';
                  
-                  while($row=$rr->fetch_array())
+                 while($row=$rr->fetch_array())
                   {
                           echo "<tr>
-                                   <td>";
-                                  echo'<span data-feather="chevron-right"></span>';
-                                  echo "
-                                  </td>
+                                   
                                   <td>";
-                                  echo $row['username'];
+                                  echo $row['sid'];
                                   echo "  
                                   </td>
                                   <td>";
-                                  echo $row['email'];
+                                  echo $row['uid'];
                                   echo "
                                   </td>
                                   <td>";
-                                 // echo $row['phone'];
-                                 // echo "</td><td>";
-                                 // echo $row['email'];
-                                 // echo "</td><td>"; 
-                          //passing uid to unblock action page using anchor tag
-                                  $username=$row['username'];
-                                  echo "<a href=acceptusers.php?username=$username>";
-                                  echo '<input type="button" value="Accept" style="background-color:green;height:30px;width:80px">';
-                                  echo "
-                                  </td>
-                                  <td>";
-                                  echo "<a href=rejectnewuser.php?username=$username>";
-                                  echo '<input type="button" value="Reject" style="background-color:red;height:30px;width:80px">';
+                                  echo $row['quotes'];
                                   echo "
                                   </td>
                                   </tr>";
-                                  echo "
-                                  </td>
-                                  </tr>";
+                                  
                   }
                   echo "</tbody></table>";
                           
                 }
-          else  // query returns no data
-          {
-                          echo "<center><font color=red>No New users</font></center>";
+
+                else  // query returns no data
+                {
+                          echo "<center><font color=red>No Accepted Users..</font></center>";
                           //echo $_SESSION['uid']."   l    ".$_SESSION['username'];
+                }
           }
-      }
+
           else
           {
                       echo'<script>window.location="../login.php";</script>';
-          }
-      ?>
+          } 
+
+?>
       </div>  
   </body>
 </html>

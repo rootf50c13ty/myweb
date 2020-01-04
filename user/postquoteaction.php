@@ -61,7 +61,7 @@
     if($flag==0)
     {
          //insert into table
-        $query="INSERT INTO quotes (sid,uid,quotes,status) VALUES ($seasonid,$uid,'$quote',1)";
+        $query="INSERT INTO quotes (sid,uid,quotes,status) VALUES ($seasonid,$uid,'$quote',false)";
 
         if($con->query($query))
            echo'<script type="text/javascript">alert("Quote posted..");window.location="home.php"</script>';

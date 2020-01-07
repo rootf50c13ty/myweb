@@ -14,7 +14,6 @@
         <!-- Custom styles for this template -->
         <link href="css/form-validation.css" rel="stylesheet">
 
-
         <script>
            
             var password = "";
@@ -175,7 +174,7 @@
 
 </head>
 
-    <body onload='document.regform.uname.focus()'>
+    <body oncontextmenu="return false" onload='document.regform.uname.focus()'>
 
    <div class="header">
        <h1>
@@ -239,9 +238,6 @@
         </div>
     </form>
  
-
-    </script>
-
 </body>
 
 </html>

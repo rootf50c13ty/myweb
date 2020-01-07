@@ -181,6 +181,45 @@
 				  display: block;
 				}
 
+				      #quotes 
+				{
+				  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+				  border-collapse: collapse;
+				  
+				}
+
+				#quotes td, #quotes th 
+				{
+				  border: 1px solid #ddd;
+				  padding: 8px;
+				}
+
+				#quotes tr:nth-child(even)
+				{
+					background-color: #f2f2f2;
+				}
+
+				#quotes tr:hover 
+				{
+					background-color: #ddd;
+				}
+
+				#quotes th 
+				{
+				  padding-top: 12px;
+				  padding-bottom: 12px;
+				  text-align: left;
+				  background-color: #4CAF50;
+				  color: white;
+				}
+
+				table.a 
+				{
+				  table-layout: auto;
+				  width: 80%;  
+				}
+
+
 		</style>
 
 	</head>
@@ -242,6 +281,71 @@
 		      <button type="submit">Search</button>
 		    </form>
 		  </div>
+	</div>
+
+<div align=center>
+	<?php
+	
+	
+              $query="select seasons.season,quotes.quotes,quotes.status FROM seasons INNER JOIN quotes ON seasons.sid=quotes.sid WHERE quotes.status=1";
+              $rr=$con->query($query);
+
+              //if num or returned by the query is > 0
+              if(mysqli_num_rows($rr)>0)
+              {
+                    // constructing table view
+                      echo '
+
+                      <table class="a" cellspacing="20" id="quotes">
+                        <thead>
+                          <tr>
+                                    <th>Quote</th>
+									<th>Season</th>		                                    
+                          </tr>
+                        </thead>
+              		
+              		<tbody>';
+			
+			  		while($row=$rr->fetch_array())
+                 	{
+                          echo "
+                          <tr>
+                                   
+                                  <td>";
+
+                                  echo $row['quotes'];
+                                  echo "  
+                                  </td>
+                                  <td>";
+                                  echo $row['season'];
+/*
+                              if($row['sid']==1)
+                                  echo 'Season1';
+ 							  elseif($row['sid']==2)
+								  echo 'Season2';
+							  elseif($row['sid']==3)
+							  	  echo 'Season3';
+							  else	 							  	
+ 							  	  echo 'Season4';
+ 							  	  //echo $row['sid'];
+ */
+
+ 							      echo "
+                                  </td>                             
+                          </tr>";
+                    }
+                    echo "</tbody></table>";
+                          
+                } 
+
+				else  // query returns no data
+                {
+                          echo "<center><font color=red>We dont have approved quotes..</font></center>";
+                          //echo $_SESSION['uid']."   l    ".$_SESSION['username'];
+                }
+
+               
+	?>
 	</div>
 
 	<div class="footer">

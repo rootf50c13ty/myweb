@@ -232,18 +232,15 @@
 		
 	<div class="topnav">
 	  <a class="active" href="home.php">Home</a>
-	  <a href="#about">About</a>
-	  <a href="#">Contact</a>
-
 	   <div class="dropdown">
     <button class="dropbtn">Dropdown 
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Season 1</a>
-      <a href="#">Season 2</a>
-      <a href="#">Season 3</a>
-      <a href="#">Season 4</a>
+      <a href="#" onclick="changeLink('cat','1')">Season 1</a>
+      <a href="#" onclick="changeLink('cat','2')">Season 2</a>
+      <a href="#" onclick="changeLink('cat','3')">Season 3</a>
+      <a href="#" onclick="changeLink('cat','4')">Season 4</a>
     </div>
   </div> 
 

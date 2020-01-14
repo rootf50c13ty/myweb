@@ -191,7 +191,7 @@ table.a {
 
               //selecting new users , status==o
 
-              $query="select * from user_data where status=1";
+              $query="select * from user_data where utype=1 AND (status=1 OR status=2);";
               $rr=$con->query($query);
               if(mysqli_num_rows($rr)>0)
               {
@@ -205,6 +205,7 @@ table.a {
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>User ID</th>
+                                    <th>Block/Unblock User</th>
                                     
                           </tr>
                         </thead>
@@ -226,9 +227,24 @@ table.a {
                                   <td>";
                                   // echo $row['email'];
                                  // echo "</td><td>"; 
-                          //passing uid to unblock action page using anchor tag
-                                  
+                          //passing uid to unblock action page using anchor tag 
                                   echo $row['uid'];
+                                  echo "
+                                  </td>
+                                  <td>";
+                                  $uid=$row['uid'];
+
+                                  if($row['status']==1)
+                                  {
+                                    echo "<a href=blockuser.php?uid=$uid>";
+                                    echo '<input type="button" value="Block" style="background-color:#cc0000; color:#ffffff; font-weight: bold; height:30px;width:80px">';
+                                  }
+                                  else
+                                  {
+                                    echo "<a href=unblockaction.php?uid=$uid>";
+                                    echo '<input type="button" value="Unblock" style="background-color:#53c653; color:#ffffff; font-weight: bold; height:30px;width:80px">';
+                                  }
+
                                   echo "
                                   </td>
                                   </tr>";

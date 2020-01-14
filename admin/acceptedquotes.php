@@ -128,19 +128,25 @@
   
 }
 
-#quotes td, #quotes th {
+#quotes td, #quotes th 
+{
+  text-align: center;
   border: 1px solid #ddd;
   padding: 8px;
 }
 
 #quotes tr:nth-child(even){background-color: #f2f2f2;}
 
-#quotes tr:hover {background-color: #ddd;}
+#quotes tr:hover 
+{
+  background-color: #ddd;
+  text-align: center;
+}
 
 #quotes th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: #4CAF50;
   color: white;
 }
@@ -203,6 +209,7 @@ table.a {
                                     <th>Season ID</th>
                                     <th>User ID</th>
                                     <th>Quote</th>
+                                    <th>Delete Quote</th>
                                                                        
                           </tr>
                         </thead>
@@ -223,6 +230,12 @@ table.a {
                                   </td>
                                   <td>";
                                   echo $row['quotes'];
+                                  echo "
+                                  </td>
+                                  <td>";
+                                  $qid=$row['qid'];
+                                  echo "<a href=deletequote.php?qid=$qid>";
+                                  echo '<input type="button" value="Delete" style="background-color:#cc0000; color:#ffffff; font-weight: bold; height:30px;width:80px">';
                                   echo "
                                   </td>
                                   </tr>";

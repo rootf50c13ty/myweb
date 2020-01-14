@@ -208,12 +208,12 @@
                           //passing uid to unblock action page using anchor tag
                                   $username=$row['username'];
                                   echo "<a href=acceptusers.php?username=$username>";
-                                  echo '<input type="button" value="Accept" style="background-color:green;height:30px;width:80px">';
+                                  echo '<input type="button" value="Accept" style="background-color:#cc0000; color:#ffffff; height:30px;width:80px">';
                                   echo "
                                   </td>
                                   <td>";
                                   echo "<a href=rejectnewuser.php?username=$username>";
-                                  echo '<input type="button" value="Reject" style="background-color:red;height:30px;width:80px">';
+                                  echo '<input type="button" value="Reject" style="background-color:#53c653; color:#ffffff; height:30px; width:80px">';
                                   echo "
                                   </td>
                                   </tr>";

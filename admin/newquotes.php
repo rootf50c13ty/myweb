@@ -212,7 +212,7 @@ table.a {
                     <tbody>';
                  
                  while($row=$rr->fetch_array())
-                  {
+                 {
                           echo "<tr>
                                    
                                   <td>";
@@ -235,12 +235,12 @@ table.a {
                           //passing uid to unblock action page using anchor tag
                                   $qid=$row['qid'];
                                   echo "<a href=acceptquoteaction.php?qid=$qid>";
-                                  echo '<input type="button" value="Accept" style="background-color:#5CF33D;font-weight: bold;height:30px;width:80px">';
+                                  echo '<input type="button" value="Accept" style="background-color:#5CF33D;font-weight: bold; color:#ffffff; height:30px;width:80px">';
                                   echo "
                                   </td>
                                   <td>";
-                                  echo "<a href=rejectquoteaction.php?qid=$qid>";
-                                  echo '<input type="button" value="Reject" style="background-color:red; font-weight: bold; height:30px;width:80px">';
+                                  echo "<a href=deletequote.php?qid=$qid>";
+                                  echo '<input type="button" value="Reject" style="background-color:#cc0000; font-weight: bold; color:#ffffff; height:30px;width:80px">';
                                   echo "
                                   </td>
                                   </tr>";

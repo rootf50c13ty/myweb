@@ -34,17 +34,21 @@
 				.topnav {
 				  overflow: hidden;
 				  background-color: #e9e9e9;
+
 				}
 
 				.topnav a {
-				  float: left;
-				  display: block;
-				  color: black;
-				  text-align: center;
-				  padding: 14px 16px;
-				  text-decoration: none;
-				  font-size: 17px;
-				}
+                  float: left;
+                  display: block;
+                  color: black;
+                  text-align: center;
+                  padding: 14px 16px;
+                  text-decoration: none;
+                  font-size: 17px;
+
+                }
+
+
 
 				.topnav a:hover {
 				  background-color: #ddd;
@@ -65,6 +69,7 @@
 				  margin-top: 8px;
 				  font-size: 17px;
 				  border: none;
+
 				}
 
 				.topnav .search-container button {
@@ -93,9 +98,13 @@
 				    width: 100%;
 				    margin: 0;
 				    padding: 14px;
+
+				 
 				  }
 				  .topnav input[type=text] {
-				    border: 1px solid #ccc;  
+				    border: 1px solid #ccc;
+
+
 				  }
 				}
 
@@ -232,11 +241,12 @@
 	          
 	          // checkimg for logged in users , $_SESSION['type']==1 for confirming the user level
 	          session_start();
+	          //selecting user data
+	          $username=$_SESSION['username'];
 	          if($_SESSION['username'] && $_SESSION['status']==1) 
 	          {       
 
-	              //selecting user data
-	          	  $username=$_SESSION['username'];
+	              
 	              $query="select * from user_data where username='$username'";
 	              $rr=$con->query($query);
 	              if($row = $rr->fetch_array())
@@ -254,40 +264,48 @@
 
 
 		
-	<div class="topnav">
-	  <a class="active" href="home.php">Home</a>
-	  <a href="#about">About</a>
-	  <a href="#">Contact</a>
-	  	  
-	  <div class="dropdown">
-    <button class="dropbtn">Dropdown 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Season 1</a>
-      <a href="#">Season 2</a>
-      <a href="#">Season 3</a>
-      <a href="#">Season 4</a>
-    </div>
-  </div> 
-
+	<div class="topnav"> 
+ 
+ 	  <a class="active" href="home.php">Home</a>
       <a href="logout.php">Log Out</a>
 	  
 	  <button type="submit" onclick="window.location='postquote.php'">Post Quote</button>
 
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#" onclick="changeLink('cat','1')">Season 1</a>
+      <a href="#" onclick="changeLink('cat','2')">Season 2</a>
+      <a href="#" onclick="changeLink('cat','3')">Season 3</a>
+      <a href="#" onclick="changeLink('cat','4')">Season 4</a>
+    </div>
+  </div> 
+
+
 		  <div class="search-container">
-		    <form action="/action_page.php">
-		      <input type="text" placeholder="Search.." name="search">
+		    <form action="search.php">
+		      <input type="text" placeholder="Search.." name="que">
 		      <button type="submit">Search</button>
 		    </form>
 		  </div>
+
+		<a href="profile.php">
+
+	  	My Profile
+
+	  </a> 
+
 	</div>
+	
 
 <div align=center>
 	<?php
 	
 	
               $query="select seasons.season,quotes.quotes,quotes.status FROM seasons INNER JOIN quotes ON seasons.sid=quotes.sid WHERE quotes.status=1";
+
               $rr=$con->query($query);
 
               //if num or returned by the query is > 0

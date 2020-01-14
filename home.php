@@ -51,6 +51,9 @@
 				  padding: 14px 16px;
 				  text-decoration: none;
 				  font-size: 17px;
+				  
+				  padding-left:20px;"
+
 				}
 
 				.topnav a:hover {
@@ -100,6 +103,9 @@
 				    width: 100%;
 				    margin: 0;
 				    padding: 14px;
+
+				    padding-left:20px;
+
 				  }
 				  .topnav input[type=text] {
 				    border: 1px solid #ccc;  

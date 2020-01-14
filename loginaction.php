@@ -38,7 +38,9 @@
 					$_SESSION['username']=$row['username'];
 					$_SESSION['type']=$row['utype'];
 					$_SESSION['status']=$row['status'];
-				
+					$_SESSION['uid']=$row['uid'];
+			
+
 							//blocked users
 							$aa="2";
 							if(strcmp($aa,$row['utype'])==0)

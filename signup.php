@@ -172,6 +172,8 @@
 
         </script> 
 
+         <script src="https://www.google.com/reCAPTCHA/api.js" async defer></script>
+
 </head>
 
     <body oncontextmenu="return false" onload='document.regform.uname.focus()'>
@@ -228,7 +230,8 @@
             <br>
             <span id="confirm-message2"></span>
             <hr>
-            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            
+            <input type="submit" value="Submit">
 
             <button type="submit" class="registerbtn" >Register</button>
         </div>
